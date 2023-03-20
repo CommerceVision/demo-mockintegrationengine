@@ -1,0 +1,60 @@
+name: CV Integration engine production CICD pipeline
+
+on:
+ workflow_dispatch # master
+
+env:
+  AZURE_FUNCTIONAPP_NAME: ${{ vars.AZURE_FUNCTIONAPP_NAME }}   # function app name on Azure
+  AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # 'CvIntegrationFunctions'       # function app project path
+  AZURE_FUNCTIONAPP_UNIT_TEST_PATH: 'FunctionTests'   # unit test path
+  DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}          # set this to the dotnet version to use (e.g. '2.1.x', '3.1.x', '5.0.x')
+
+jobs:
+
+  build-test-deploy:
+    runs-on: windows-latest
+    environment: PROD
+    steps:
+        
+    - name: 'Checkout Source Code'
+      uses: actions/checkout@v3
+
+    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: 'Resolve Project Dependencies And Build'
+      shell: pwsh # For Linux, use bash
+      run: |
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        dotnet build --configuration Release --output ./output
+        popd
+                
+    - name: 'Run Azure Functions Action'
+      uses: Azure/functions-action@v1
+      id: fa
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+
+  swap-slots:
+    runs-on: ubuntu-latest # For Windows, use windows-latest
+    environment: PROD
+    needs: build-test-deploy
+    steps:
+        
+    - name: Azure Login
+      uses: Azure/login@v1.4.6
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Azure CLI Action
+      uses: Azure/cli@v1.0.7
+      with:
+        inlineScript: |
+          az functionapp start --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --slot stage
+          az functionapp deployment slot swap -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.AZURE_FUNCTIONAPP_NAME }} --slot stage --target-slot production
+          az functionapp stop --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --slot stage
