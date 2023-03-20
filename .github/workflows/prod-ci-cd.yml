@@ -6,7 +6,7 @@ on:
 env:
   AZURE_FUNCTIONAPP_NAME: ${{ vars.AZURE_FUNCTIONAPP_NAME }}   # function app name on Azure
   AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'CvIntegrationFunctions'       # function app project path
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # 'CvIntegrationFunctions'       # function app project path
   AZURE_FUNCTIONAPP_UNIT_TEST_PATH: 'FunctionTests'   # unit test path
   DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}          # set this to the dotnet version to use (e.g. '2.1.x', '3.1.x', '5.0.x')
 
