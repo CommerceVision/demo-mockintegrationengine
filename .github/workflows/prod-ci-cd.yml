@@ -36,6 +36,7 @@ jobs:
       shell: pwsh # For Linux, use bash
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_UNIT_TEST_PATH }}'
+        dotnet build
         dotnet test
         popd
                 
