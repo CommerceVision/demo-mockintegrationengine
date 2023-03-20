@@ -1,9 +1,7 @@
 name: CV Integration engine production CICD pipeline
 
 on:
-  push:
-    branches:
-    - workflow_dispatch # master
+ workflow_dispatch # master
 
 env:
   AZURE_FUNCTIONAPP_NAME: ${{ vars.AZURE_FUNCTIONAPP_NAME }}   # function app name on Azure
