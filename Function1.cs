@@ -37,9 +37,6 @@ namespace MockIntegrationEngine
         static List<string> Features => new List<string>
         {
             "Feature 01",
-            "Feature 02",
-            "Feature 03",
-            "Feature 04",
         };
 
         [FunctionName("Function1_HttpStart")]
