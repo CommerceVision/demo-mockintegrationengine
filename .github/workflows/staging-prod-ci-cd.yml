@@ -71,7 +71,7 @@ jobs:
   
   prod-build-test-deploy:
     runs-on: windows-latest
-    environment: STAGING
+    environment: PROD
     needs: staging-swap-slots
     steps:
         
@@ -105,7 +105,7 @@ jobs:
 
   prod-swap-slots:
     runs-on: ubuntu-latest # For Windows, use windows-latest
-    environment: STAGING
+    environment: PROD
     needs: prod-build-test-deploy
     steps:
         
