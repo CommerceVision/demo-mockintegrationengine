@@ -1,4 +1,4 @@
-name: CV Integration engine production CICD pipeline
+name: CV Integration engine dev CICD pipeline
 
 on:
   push:
