@@ -1,0 +1,14 @@
+name: Release notes test
+
+on:
+ workflow_dispatch
+
+jobs:
+  test-notes:
+    runs-on: windows-latest
+    environment: PROD
+    steps:        
+    - name: 'test notes'
+      shell: pwsh
+      run: |
+        echo 'test notes'
