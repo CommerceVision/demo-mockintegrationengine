@@ -8,3 +8,5 @@ on:
 jobs:
   call-base-pipe-line:
     uses: ./.github/workflows/cv-integration-engine-ci-cd-pipeline-base.yml
+    with:
+      integration-env: DEV
