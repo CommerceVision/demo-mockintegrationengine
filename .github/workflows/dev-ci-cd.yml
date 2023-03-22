@@ -3,7 +3,7 @@ name: CV Integration engine dev CICD pipeline
 on:
   push:
     branches:
-    - devv
+    - dev
     
 jobs:
   call-base-pipe-line:
