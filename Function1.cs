@@ -40,6 +40,7 @@ namespace MockIntegrationEngine
             "Feature 02",
             "Feature 03",
             "Feature 04",
+            "Feature 05",
         };
 
         [FunctionName("Function1_HttpStart")]
