@@ -2,6 +2,10 @@ name: CV Integration engine base CICD pipeline
 
 on:
   workflow_call:
+    inputs:
+      integration-env:
+        required: true
+        type: string
 
 env:
   AZURE_FUNCTIONAPP_NAME: ${{ vars.AZURE_FUNCTIONAPP_NAME }}   # function app name on Azure
@@ -14,7 +18,7 @@ jobs:
 
   build-test-deploy:
     runs-on: windows-latest
-    environment: DEV
+    environment: ${{ inputs.integration-env }}
     steps:
         
     - name: 'Checkout Source Code'
@@ -47,7 +51,7 @@ jobs:
 
   swap-slots:
     runs-on: ubuntu-latest # For Windows, use windows-latest
-    environment: DEV
+    environment: ${{ inputs.integration-env }}
     needs: build-test-deploy
     steps:
         
