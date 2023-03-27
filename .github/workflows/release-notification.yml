@@ -12,5 +12,5 @@ jobs:
       uses: xinlibrisbane/release-notify-action@master # bitoiu/release-notify-action@v1.0
       env:
         SENDGRID_API_TOKEN: ${{ secrets.SENDGRID_API_TOKEN }}
-        RECIPIENTS: ${{ vars.RELEASE_NOTES_RECIPIENTS }}
+        BCC_RECIPIENTS_URL: ${{ vars.BCC_RECIPIENTS_URL }}
         SENDER_EMAIL: 'porrimaxin@gmail.com'
