@@ -1,7 +1,7 @@
 name: E-Mail Release Notification
 on:
-  release:
-    types: [published]
+  # release:
+    # types: [published]
 jobs:
   notify:
     runs-on: ubuntu-latest
