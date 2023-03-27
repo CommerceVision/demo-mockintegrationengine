@@ -13,3 +13,4 @@ jobs:
       env:
         SENDGRID_API_TOKEN: ${{ secrets.SENDGRID_API_TOKEN }}
         RECIPIENTS: ${{ vars.RELEASE_NOTES_RECIPIENTS }}
+        SENDER_EMAIL: 'porrimaxin@gmail.com'
