@@ -1,5 +1,5 @@
 name: E-Mail Release Notification
-on:
+# on:
   # release:
     # types: [published]
 jobs:
