@@ -15,4 +15,4 @@ jobs:
         # BCC_RECIPIENTS_URL: ${{ vars.BCC_RECIPIENTS_URL }}
         RELEASE_NOTES_RECIPIENTS: ${{ vars.RELEASE_NOTES_RECIPIENTS }}
         RELEASE_NOTES_BCC_RECIPIENTS: ${{ vars.RELEASE_NOTES_BCC_RECIPIENTS }}
-        SENDER_EMAIL: 'porrimaxin@gmail.com'
+        SENDER_EMAIL: ${{ vars.SENDER_EMAIL }}
