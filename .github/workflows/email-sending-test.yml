@@ -17,7 +17,7 @@ jobs:
     - name: print notes
       shell: bash
       run: |
-       echo ${{ steps.extract-release-notes.outputs.release_notes }}
+       echo "${{ steps.extract-release-notes.outputs.release_notes }}"
        echo "notes printed"
           
     - name: Send mail
