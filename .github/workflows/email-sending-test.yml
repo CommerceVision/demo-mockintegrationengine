@@ -18,6 +18,7 @@ jobs:
       shell: bash
       run: |
        echo "${{ steps.extract-release-notes.outputs.release_notes }}"
+       echo "${{ github.job }}, {{ github.workflow }}, {{ github.repository }}, {{ github.run_id }}"
        echo "notes printed"
           
     - name: Send mail
