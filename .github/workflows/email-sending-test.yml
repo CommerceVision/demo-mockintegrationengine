@@ -6,7 +6,19 @@ on:
 jobs:
  send-mail:
   runs-on: ubuntu-latest
-  steps:
+  steps: 
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Extract release notes
+      id: extract-release-notes
+      uses: ffurrer2/extract-release-notes@v1
+      
+    - name: print notes
+      shell: pwsh
+      run: |
+       echo ${{ steps.extract-release-notes.outputs.release_notes }}
+          
     - name: Send mail
       uses: dawidd6/action-send-mail@v3.7.1
       with:
@@ -16,6 +28,6 @@ jobs:
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
         subject: ${{ github.job }} job of ${{ github.repository }}
         body: |
-          ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} run id ${{ github.run_id }}.
+          ${{ steps.extract-release-notes.outputs.release_notes }} ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} run id ${{ github.run_id }}.
         to: ${{ vars.TEST_TO_EMAILS }}   # comma-separated string
         from: ${{ vars.TEST_FROM_EMAIL }}
