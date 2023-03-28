@@ -4,15 +4,18 @@ on:
   workflow_dispatch
     
 jobs:
-  - name: Send mail
-    uses: dawidd6/action-send-mail@v3.7.1
-    with:
-      server_address: smtp.gmail.com
-      server_port: 587
-      username: ${{ secrets.TEST_EMAIL_USERNAME }}
-      password: ${{ secrets.TEST_EMAIL_PASSWORD }}
-      subject: ${{ github.job }} job of ${{ github.repository }}
-      body: |
-        ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} run id ${{ github.run_id }}.
-      to: ${{ vars.TEST_TO_EMAILS }}   # comma-separated string
-      from: ${{ vars.TEST_FROM_EMAIL }}
+ send-mail:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3.7.1
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.TEST_EMAIL_USERNAME }}
+        password: ${{ secrets.TEST_EMAIL_PASSWORD }}
+        subject: ${{ github.job }} job of ${{ github.repository }}
+        body: |
+          ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} run id ${{ github.run_id }}.
+        to: ${{ vars.TEST_TO_EMAILS }}   # comma-separated string
+        from: ${{ vars.TEST_FROM_EMAIL }}
