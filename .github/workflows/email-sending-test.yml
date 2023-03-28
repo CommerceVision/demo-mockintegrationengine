@@ -17,7 +17,7 @@ jobs:
     - name: print notes
       shell: bash
       run: |
-       echo "hello hello" # ${{ steps.extract-release-notes.outputs.release_notes }}
+       echo ${{ steps.extract-release-notes.outputs.release_notes }}
           
     - name: Send mail
       uses: dawidd6/action-send-mail@v3.7.1
