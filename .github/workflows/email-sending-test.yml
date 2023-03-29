@@ -36,8 +36,8 @@ jobs:
     - name: Send mail
       uses: dawidd6/action-send-mail@v3.7.1
       with:
-        server_address: smtp.gmail.com
-        server_port: 587
+        server_address: send.smtp.com
+        server_port: 2525
         username: ${{ secrets.TEST_EMAIL_USERNAME }}
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
         subject: ${{ github.job }} job of ${{ github.repository }}
