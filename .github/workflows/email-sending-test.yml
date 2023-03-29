@@ -40,9 +40,9 @@ jobs:
         server_port: 2525
         username: ${{ secrets.TEST_EMAIL_USERNAME }}
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
-        subject: ${{ github.job }} job of ${{ github.repository }}
+        subject: Test email
         body: |
-          test
-        from: Luke Skywalker
+          test email body
+        from: Xin Li
         to: xin.li@commercevision.com.au
 
