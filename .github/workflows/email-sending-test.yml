@@ -32,6 +32,13 @@ jobs:
        echo "${{ steps.extract-release-notes.outputs.release_notes }}"
        echo "${{ github.job }}, {{ github.workflow }}, {{ github.repository }}, {{ github.run_id }}"
        echo "notes printed"
+       
+    - name: Send mail ci  
+      uses: cinotify/github-action@main
+      with:
+        to: 'xin.li@commercevision.com.au'
+        subject: 'building main'
+        body: 'This is a notification from GitHub actions.'
           
     - name: Send mail
       uses: dawidd6/action-send-mail@master # v3      # @v3.7.1
