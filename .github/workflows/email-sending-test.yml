@@ -38,7 +38,7 @@ jobs:
       with:
         to: 'xin.li@commercevision.com.au'
         subject: 'building main'
-        body: ${{ steps.extract-release-notes.outputs.release_notes }} # 'This is a notification from GitHub actions.'
+        body: '<p>Hi There</p>'  # ${{ steps.extract-release-notes.outputs.release_notes }} # 'This is a notification from GitHub actions.'
           
     - name: Send mail
       uses: dawidd6/action-send-mail@master # v3      # @v3.7.1
