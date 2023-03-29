@@ -39,4 +39,4 @@ jobs:
       with:
         to: 'xin.li@commercevision.com.au'
         subject: "Integration Engine Release ${{ steps.get_release.outputs.name }}"
-        body: "${{ steps.get_release.outputs.body }}"
+        body: ${{ steps.get_html.outputs.html }} # "${{ steps.get_release.outputs.body }}"
