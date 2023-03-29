@@ -34,7 +34,7 @@ jobs:
        echo "notes printed"
           
     - name: Send mail
-      uses: dawidd6/action-send-mail@v3      # @v3.7.1
+      uses: dawidd6/action-send-mail@master # v3      # @v3.7.1
       with:
         server_address: send.smtp.com
         # secure: true
@@ -43,7 +43,7 @@ jobs:
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
         subject: Test email
         body: |
-          test email body
+          Test email body
         from: christian.kohl@commercevision.com.au
         to: xin.li@commercevision.com.au
 
