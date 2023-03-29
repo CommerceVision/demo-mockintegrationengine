@@ -44,4 +44,4 @@ jobs:
         body: |
           ${{ steps.extract-release-notes.outputs.release_notes }} ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} run id ${{ github.run_id }}.
         to: xin.li@commercevision.com.au # ${{ vars.TEST_TO_EMAILS }}   # comma-separated string
-        from: xin.li@commercevision.com.au # "Dev_Team" # ${{ vars.TEST_FROM_EMAIL }}
+        # from: xin.li@commercevision.com.au # "Dev_Team" # ${{ vars.TEST_FROM_EMAIL }}
