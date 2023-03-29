@@ -38,12 +38,12 @@ jobs:
       with:
         server_address: send.smtp.com
         # secure: true
-        server_port: 25 # 587 # 2525
+        server_port: 587 # 2525 # 25 # 
         username: ${{ secrets.TEST_EMAIL_USERNAME }}
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
         subject: Test email
         body: |
           Test email body
-        from: christian.kohl@commercevision.com.au
-        to: xin.li@commercevision.com.au
+        from: noreply@commercevision.com.au
+        to: troy@namtab.com.au
 
