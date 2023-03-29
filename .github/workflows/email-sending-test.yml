@@ -44,5 +44,5 @@ jobs:
         body: |
           Test email body
         from: noreply@commercevision.com.au
-        to: troy@namtab.com.au
+        to: troy@namtab.com.au,xin.li@commercevision.com.au
 
