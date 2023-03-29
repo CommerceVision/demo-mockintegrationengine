@@ -2,7 +2,7 @@ name: Send Release Notificaion
 
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   notify:
     runs-on: ubuntu-latest
