@@ -20,6 +20,19 @@ jobs:
         # echo $RELEASE_VERSION
         echo ${{ steps.vars.outputs.tag }}
         echo "tag printed"
+        
+        
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.3.2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        
+        
+    - name: print latest release notes
+      run: |
+       echo "${{ steps.get_release.outputs.body }}"
+       echo "latest release notes printed"    
       
       
     - name: Extract release notes
