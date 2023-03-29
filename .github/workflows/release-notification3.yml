@@ -1,0 +1,23 @@
+name: Send Release Notificaion
+
+on:
+  release:
+    types: [created]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.3.2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        
+        
+    - name: print latest release notes
+      run: |
+       echo "${{ steps.get_release.outputs.body }}"
+       echo "latest release notes printed"   
