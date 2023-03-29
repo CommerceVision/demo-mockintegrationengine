@@ -34,7 +34,7 @@ jobs:
        echo "notes printed"
           
     - name: Send mail
-      uses: dawidd6/action-send-mail@v3.7.1
+      uses: dawidd6/action-send-mail@v3      # @v3.7.1
       with:
         server_address: send.smtp.com
         server_port: 2525
@@ -42,6 +42,7 @@ jobs:
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
         subject: ${{ github.job }} job of ${{ github.repository }}
         body: |
-          ${{ steps.extract-release-notes.outputs.release_notes }} ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} run id ${{ github.run_id }}.
-        to: xin.li@commercevision.com.au # ${{ vars.TEST_TO_EMAILS }}   # comma-separated string
+          test
         from: Luke Skywalker
+        to: xin.li@commercevision.com.au
+
