@@ -22,6 +22,18 @@ jobs:
        echo "${{ steps.get_release.outputs.body }}"
        echo "latest release notes printed"
        
+    - name: mark down to html
+      id: get_html
+      uses: lifepal/markdown-to-html@v1.1
+      with:
+        text: ${{ steps.get_release.outputs.body }}
+        
+        
+    - name: print html
+      run: |
+       echo "${{ steps.get_html.outputs.html }}"
+       echo "html printed"    
+       
     - name: Send mail ci  
       uses: cinotify/github-action@main
       with:
