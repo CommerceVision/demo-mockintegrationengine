@@ -43,6 +43,6 @@ jobs:
         subject: Test email
         body: |
           test email body
-        from: Xin Li
+        from: Dev_Team
         to: xin.li@commercevision.com.au
 
