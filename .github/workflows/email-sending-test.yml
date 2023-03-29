@@ -44,6 +44,6 @@ jobs:
         subject: Test email
         body: |
           test email body
-        from: noreply@commercevision.com.au
+        from: christian.kohl@commercevision.com.au
         to: xin.li@commercevision.com.au
 
