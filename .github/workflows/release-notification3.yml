@@ -20,4 +20,11 @@ jobs:
     - name: print latest release notes
       run: |
        echo "${{ steps.get_release.outputs.body }}"
-       echo "latest release notes printed"   
+       echo "latest release notes printed"
+       
+    - name: Send mail ci  
+      uses: cinotify/github-action@main
+      with:
+        to: 'xin.li@commercevision.com.au'
+        subject: "New release: ${{ steps.get_release.outputs.name }}"
+        body: steps.get_release.outputs.body
