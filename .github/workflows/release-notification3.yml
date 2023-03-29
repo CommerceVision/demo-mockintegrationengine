@@ -26,5 +26,5 @@ jobs:
       uses: cinotify/github-action@main
       with:
         to: 'xin.li@commercevision.com.au'
-        subject: "New release: ${{ steps.get_release.outputs.name }}"
+        subject: "Integration Engine Release ${{ steps.get_release.outputs.name }}"
         body: "${{ steps.get_release.outputs.body }}"
