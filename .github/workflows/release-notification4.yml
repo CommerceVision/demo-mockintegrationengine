@@ -1,8 +1,8 @@
-name: Send Release Notificaion final
+# name: Send Release Notificaion final
 
-on:
-  release:
-    types: [published]
+# on:
+  # release:
+    # types: [published]
 jobs:
   notify:
     runs-on: ubuntu-latest
