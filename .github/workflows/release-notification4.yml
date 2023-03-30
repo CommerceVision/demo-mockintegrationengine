@@ -1,0 +1,48 @@
+name: Send Release Notificaion final
+
+on:
+  release:
+    types: [published]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.3.2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        
+        
+    - name: print latest release notes
+      run: |
+       echo "${{ steps.get_release.outputs.body }}"
+       echo "latest release notes printed"
+       
+    - name: mark down to html
+      id: get_html
+      uses: lifepal/markdown-to-html@v1.1
+      with:
+        text: ${{ steps.get_release.outputs.body }}
+        
+        
+    - name: print html
+      run: |
+       echo "${{ steps.get_html.outputs.html }}"
+       echo "html printed"    
+       
+    - name: Send mail
+      uses: juanformoso/action-send-mail@1
+      with:
+        server_address: send.smtp.com
+        server_port: 587 # 2525 # 25 # 
+        username: ${{ secrets.TEST_EMAIL_USERNAME }}
+        password: ${{ secrets.TEST_EMAIL_PASSWORD }}
+        subject: "Integration Engine Release ${{ steps.get_release.outputs.name }}"
+        body: ${{ steps.get_release.outputs.body }}
+        convert_markdown: true
+        from: noreply@commercevision.com.au
+        to: xin.li@commercevision.com.au
