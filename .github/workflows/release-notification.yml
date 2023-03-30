@@ -1,4 +1,4 @@
-name: Send Release Notificaion
+# name: Send Release Notificaion
 
 # on:
   # release:
