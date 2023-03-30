@@ -43,6 +43,6 @@ jobs:
         password: ${{ secrets.TEST_EMAIL_PASSWORD }}
         subject: "Integration Engine Release ${{ steps.get_release.outputs.name }}"
         body: ${{ steps.get_release.outputs.body }}
-        convert_markdown: true
+        # convert_markdown: true
         from: noreply@commercevision.com.au
         to: xin.li@commercevision.com.au
