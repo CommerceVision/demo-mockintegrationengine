@@ -46,4 +46,4 @@ jobs:
         convert_markdown: true
         content_type: text/html
         from: noreply@commercevision.com.au
-        to: xin.li@commercevision.com.au
+        to: xin.li@commercevision.com.au,christian.kohl@commercevision.com.au
