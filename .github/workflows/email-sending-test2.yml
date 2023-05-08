@@ -1,0 +1,24 @@
+name: Email Sending Test 2
+
+on:
+  workflow_dispatch
+    
+jobs:
+ send-mail:
+  runs-on: ubuntu-latest
+  steps: 
+    - name: Checkout
+      uses: actions/checkout@v3
+                   
+    - name: Send mail
+      uses: juanformoso/action-send-mail@1
+      with:
+        server_address: send.smtp.com
+        server_port: 587 # 2525 # 25 # 
+        username: ${{ secrets.TEST_EMAIL_USERNAME }}
+        password: ${{ secrets.TEST_EMAIL_PASSWORD }}
+        subject: Test email
+        body: |
+          Test email body
+        from: noreply@commercevision.com.au
+        to: xin.li@commercevision.com.au

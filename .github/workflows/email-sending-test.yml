@@ -1,0 +1,58 @@
+name: Email Sending Test
+
+on:
+  workflow_dispatch
+    
+jobs:
+ send-mail:
+  runs-on: ubuntu-latest
+  steps: 
+    - name: Checkout
+      uses: actions/checkout@v3
+           
+    - name: Set output
+      id: vars
+      run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+    - name: Check output
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: |
+        # echo $RELEASE_VERSION
+        echo ${{ steps.vars.outputs.tag }}
+        echo "tag printed"
+        
+        
+ 
+      
+      
+    - name: Extract release notes
+      id: extract-release-notes
+      uses: ffurrer2/extract-release-notes@v1
+      
+    - name: print notes
+      shell: bash
+      run: |
+       echo "${{ steps.extract-release-notes.outputs.release_notes }}"
+       echo "${{ github.job }}, {{ github.workflow }}, {{ github.repository }}, {{ github.run_id }}"
+       echo "notes printed"
+       
+    - name: Send mail ci  
+      uses: cinotify/github-action@main
+      with:
+        to: 'xin.li@commercevision.com.au'
+        subject: 'building main'
+        body: '<p>Hi There</p>'  # ${{ steps.extract-release-notes.outputs.release_notes }} # 'This is a notification from GitHub actions.'
+          
+    - name: Send mail
+      uses: dawidd6/action-send-mail@master # v3      # @v3.7.1
+      with:
+        server_address: send.smtp.com
+        server_port: 587 # 2525 # 25 # 
+        username: ${{ secrets.TEST_EMAIL_USERNAME }}
+        password: ${{ secrets.TEST_EMAIL_PASSWORD }}
+        subject: Test email
+        body: |
+          Test email body
+        from: noreply@commercevision.com.au
+        to: troy@namtab.com.au,xin.li@commercevision.com.au
+
