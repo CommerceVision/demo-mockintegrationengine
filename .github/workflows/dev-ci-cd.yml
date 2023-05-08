@@ -5,8 +5,11 @@ on:
     branches:
     - dev
     
+  workflow_dispatch:  
+    
 jobs:
   call-base-pipe-line:
     uses: ./.github/workflows/cv-integration-engine-ci-cd-pipeline-base.yml
     with:
-      integration-env: DEV
+      integration-env: DEV      
+    secrets: inherit
