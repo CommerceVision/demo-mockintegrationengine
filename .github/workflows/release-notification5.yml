@@ -1,0 +1,31 @@
+name: Send Release Notes Email
+
+on:
+  release:
+    types: [published]
+    
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.3.2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+            
+    - name: Send release notes mail
+      uses: juanformoso/action-send-mail@1
+      with:
+        server_address: send.smtp.com
+        server_port: 587
+        username: ${{ secrets.SMTP_EMAIL_USERNAME }}
+        password: ${{ secrets.SMTP_EMAIL_PASSWORD }}
+        subject: "New Integration Engine Release: ${{ steps.get_release.outputs.name }}"
+        body: ${{ steps.get_release.outputs.body }}
+        convert_markdown: true
+        content_type: text/html
+        from: noreply@commercevision.com.au
+        to: ${{ vars.RELEASE_NOTES_EMAIL_RECIPIENTS }} # comma separated email list
