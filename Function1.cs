@@ -41,6 +41,7 @@ namespace MockIntegrationEngine
             "Feature 03",
             "Feature 04",
             "Feature 05",
+            "Feature 06",
             "Feature 10",
         };
 
