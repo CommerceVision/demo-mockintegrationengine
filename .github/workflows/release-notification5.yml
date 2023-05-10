@@ -23,5 +23,5 @@ jobs:
         raw: >-
           {
             "title": "New Integration Engine Release: ${{ steps.get_release.outputs.name }}",
-            "text": "${{ steps.get_release.outputs.body }}"
+            "text": `${{ steps.get_release.outputs.body }}`
           }
