@@ -22,6 +22,6 @@ jobs:
         webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
         raw: >-
           {
-            "title": "TEST RELEASE TITLE",
+            "title": "New Integration Engine Release: ${{ steps.get_release.outputs.name }}",
             "text": "TEST RELEASE"
           }
