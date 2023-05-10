@@ -20,4 +20,4 @@ jobs:
       uses: skitionek/notify-microsoft-teams@master
       with:
         webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
-        raw: "{\"title\": \"New Integration Engine Release: ${{ steps.get_release.outputs.name }}\", \"text\": \"${{ steps.get_release.outputs.body }}\"}"
+        overwrite: "{title: `New Integration Engine Release: ${{ steps.get_release.outputs.name }}`, text: `${{ steps.get_release.outputs.body }}`}"
